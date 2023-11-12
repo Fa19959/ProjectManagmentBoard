@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Page Title</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            max-width: 2000px;
+            background-color: #2A323D;
+        }
+
+        .title {
+            color: #FFF;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .content {
+            display: flex;
+            align-items: center;
+
+            ::placeholder {
+                color: #FFF;
+            }
+        }
+
+        input[type="text"] {
+            background-color: #0149CE;
+            padding: 8px;
+            border: 1px solid #0149CE;
+            border-radius: 4px;
+            margin-right: 10px;
+            color: #FFF;
+        }
+
+        button {
+            padding: 8px 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .dropdown-container {
+            margin-bottom: 10px;
+            display: inline-block;
+            /* Add this line */
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+            font-weight: bold;
+        }
+
+        select {
+            display: inline-block;
+            width: 200px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            display: inline-block;
+            padding: 10px;
+            padding-left: 20px;
+            padding-right: 20px;
+            background-color: #264794;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+
+        }
+
+        button:hover {
+            background-color: #132f70;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="title" id="main-title">Your Title</div>
+        <div class="content">
+            <input type="text" id="input-title" placeholder="Enter title here">
+            <button id="set-button">SET</button>
+        </div>
+    </div>
+
+    <script>
+        const inputTitle = document.getElementById("input-title");
+        const mainTitle = document.getElementById("main-title");
+        const setButton = document.getElementById("set-button");
+        // Event listener for the "SET" button click
+        setButton.addEventListener("click", function () {
+            upadteTitle();
+            // Get the value from the input text box
+            const newTitle = inputTitle.value.trim();
+
+            // Update the main title with the new value
+            if (newTitle !== "") {
+                mainTitle.textContent = newTitle;
+            }
+        });
+    </script>
+    <script>
+        function upadteTitle() {
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            const titleValue = document.getElementById('input-title').value;
+
+            var raw = JSON.stringify({
+                "title": nameValue
+            });
+
+            var requestOptions = {
+                method: 'PUT',
+                headers: myHeaders,
+                body: raw,
+            };
+
+            fetch("http://localhost:8080/api/v1/board/update/1", requestOptions)
+                .then(response => response.text())
+                .then(result => console.log(result))
+                .catch(error => console.log('error', error));
+        }
+    </script>
+    </script>
+
+    <!-- Table -->
+    <table class="table" id="table">
+        <thead>
+            <tr>
+                <th scope="col">ToDo</th>
+                <th scope="col">In Progress</th>
+                <th scope="col">Done</th>
+            </tr>
+        </thead>
+        <tbody class="tableBody">
+            <tr class="table-primary">
+                <th scope="row">Primary</th>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Functions -->
+    <div class="dropdown-container">
+        <label for="dropdown1">Dropdown 1:</label>
+        <select id="dropdown1" name="dropdown1">
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+        </select>
+    </div>
+
+    <div class="dropdown-container">
+        <label for="dropdown2">Dropdown 2:</label>
+        <select id="dropdown2" name="dropdown2">
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+        </select>
+    </div>
+
+    <script src="./index.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Page Title</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            max-width: 2000px;
+            background-color: #000;
+        }
+
+        .container2 {
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+            align-items: center;
+            padding: 35px;
+            max-width: 2000px;
+            background-color: #000;
+        }
+
+        .container3 {
+            margin-top: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+            align-items: center;
+            padding: 15px;
+            max-width: 2000px;
+            background-color: #000;
+        }
+
+        .title {
+            color: #FFF;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .Control-Panel {
+            color: #FFF;
+            font-size: 35px;
+            font-weight: bold;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .cardsName {
+            color: #FFF;
+            font-size: 20px;
+            font-weight: bold;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .content {
+            display: flex;
+            align-items: center;
+
+            ::placeholder {
+                color: #FFF;
+            }
+        }
+
+        input[type="text"] {
+            background-color: #0149CE;
+            padding: 8px;
+            border: 1px solid #0149CE;
+            border-radius: 4px;
+            margin-right: 10px;
+            color: #FFF;
+        }
+
+        .enterTitleCard {
+            width: 250px;
+            display: flex;
+            background-color: #0149CE;
+            padding: 8px;
+            border: 1px solid #0149CE;
+            border-radius: 4px;
+            margin-right: 10px;
+            color: #FFF;
+            margin: 5px;
+        }
+
+        button {
+            padding: 8px 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .dropdown-container {
+            margin-bottom: 10px;
+            display: inline-block;
+            /* Add this line */
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+            font-weight: bold;
+        }
+
+        select {
+            display: inline-block;
+            width: 200px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            display: inline-block;
+            padding: 10px;
+            padding-left: 20px;
+            padding-right: 20px;
+            background-color: #264794;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+
+        }
+
+        button:hover {
+            background-color: #132f70;
+        }
+
+
+        .BoardContainer {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+
+            ::placeholder {
+                color: #FFF;
+            }
+        }
+
+        .Board {
+            position: relative;
+            background-color: #3057A6;
+            border: 1px solid #3057A6;
+            width: 400px;
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .sectionTitle {
+            background-color: #1c356b;
+            color: #FFF;
+            font-size: xx-large;
+            align-content: center;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            top: 0;
+        }
+
+        .card {
+            margin: 5px;
+            background-color: #000;
+            color: #FFF;
+            width: 95%;
+            text-align: left;
+            padding: 10px 0;
+            position: sticky;
+            padding-left: 10px;
+        }
+
+        .btn-secondary {
+            width: 250px;
+            margin-left: 5px;
+            color: #fff;
+            background-color: #0149CE;
+            border-color: #0149CE;
+        }
+
+        .btn-secondary:hover {
+            color: #fff;
+            background-color: #1c356b;
+            border-color: #1c356b;
+        }
+
+        .btn-secondary:not(:disabled):not(.disabled).active,
+        .btn-secondary:not(:disabled):not(.disabled):active,
+        .show>.btn-secondary.dropdown-toggle {
+            color: #fff;
+            background-color: #1c356b;
+            border-color: #1c356b;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #1c356b;
+            border-color: #1c356b;
+            margin: 5px;
+        }
+
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #04173a;
+            border-color: #04173a;
+            margin: 5px;
+        }
+
+        .form-items {
+            padding-top: 15px;
+            background-color: #000;
+            width: 15%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="container">
+        <div class="title" id="main-title"></div>
+        <div class="content">
+            <input type="text" id="input-title" placeholder="Enter title here">
+            <button id="set-button">Upadte</button>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <!-- Borad with Cards -->
+    <div class="BoardContainer">
+        <div id="ToDoBoard1" class="Board">
+            <div class="sectionTitle">To Do</div>
+        </div>
+        <div id="InProgress" class="Board">
+            <div class="sectionTitle">IN PROGRESS</div>
+        </div>
+        <div id="Done" class="Board">
+            <div class="sectionTitle">DONE</div>
+        </div>
+    </div>
+
+    <br>
+    <script>
+        function getCards() {
+            var requestOptions = {
+                method: 'GET',
+                redirect: 'follow'
+            };
+
+            fetch("http://localhost:8080/api/v1/card/1/cards", requestOptions)
+                .then(response => response.json())
+                .then(parsedResponse => {
+                    parsedResponse.forEach(element => {
+
+                        let boardDiv;
+
+                        let sectionDiv = element.section;
+
+                        if (sectionDiv === 1) {
+                            boardDiv = document.getElementById("ToDoBoard1");
+                        }
+                        else if (sectionDiv === 2) {
+                            boardDiv = document.getElementById("InProgress");
+                        }
+                        else {
+                            boardDiv = document.getElementById("Done");
+                        }
+
+                        let cardDiv = document.createElement("div");
+                        cardDiv.className = "card";
+
+                        let idDiv = document.createElement("div");
+                        idDiv.className = "card-id";
+                        idDiv.textContent = "#" + element.id; // Set the text content here
+
+                        let cardTitleDiv = document.createElement("div");
+                        cardTitleDiv.className = "card-title";
+                        cardTitleDiv.textContent = element.title; // Set the text content here
+
+                        let descriptionDiv = document.createElement("div");
+                        descriptionDiv.className = "card-description";
+                        descriptionDiv.textContent = element.description; // Set the text content here
+
+                        cardDiv.appendChild(idDiv);
+                        cardDiv.appendChild(cardTitleDiv);
+                        cardDiv.appendChild(descriptionDiv);
+
+                        boardDiv.appendChild(cardDiv);
+                    });
+                })
+                .catch(error => console.log('error', error));
+        }
+
+        window.onload = getCards;
+    </script>
+
+    <!-- Control Pannel -->
+    <div class="container2">
+        <div class="Control-Panel">Control Panel</div>
+    </div>
+
+    <div class="container3">
+        <div class="cardsName">Cards</div>
+    </div>
+
+    <br>
+
+    <!-- Control Cards -->
+    <div class="BoardContainer">
+        <div class="form-items">
+            <form class="requires-validation" novalidate="">
+                <input class="enterTitleCard" id="enterTitleCard" placeholder="Enter Title">
+                <input class="enterTitleCard" id="enterDescriptionCard" placeholder="Enter Description">
+                <div class="dropdown" id="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Select Section
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdownMenu">
+                        <a class="dropdown-item" id="section1">To Do</a>
+                        <a class="dropdown-item" id="section2">In Progress</a>
+                        <a class="dropdown-item" id="section3">Done</a>
+                    </div>
+                </div>
+                <div class="form-button mt-3">
+                    <button id="submit" type="button" class="btn btn-primary" onclick="createCard()">Create</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="form-items">
+            <form class="requires-validation" novalidate="">
+                <div class="dropdown" id="dropdown2">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Select an Existing Card
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdownMenu2">
+                    </div>
+                </div>
+                <div class="form-button mt-3">
+                    <button id="submit" type="button" class="btn btn-primary" onclick="deleteData()">Delete</button>
+                </div>
+            </form>
+        </div>
+
+        <div>
+            <h1>1111</h1>
+        </div>
+    </div>
+
+    <script>
+        let cardId;
+        fetch("http://localhost:8080/api/v1/card/1/cards")
+            .then((response) => { return response.json() })
+            .then((parsedResponse) => {
+                let dropdownMenuDiv = document.getElementById("dropdownMenu2");
+
+                parsedResponse.forEach((element) => {
+                    let dropdownItem = document.createElement("a");
+                    dropdownItem.className = "dropdown-item";
+                    dropdownItem.textContent = element.id;
+                    dropdownItem.setAttribute("data-id", element.id);
+                    dropdownMenuDiv.appendChild(dropdownItem);
+
+                    dropdownItem.addEventListener("click", function () {
+                        cardId = this.getAttribute("data-id");
+                        document.getElementById("dropdownMenuButton2").innerHTML = "Card " + cardId;
+                    });
+                });
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+            });
+
+        function deleteData() {
+            const url = "http://localhost:8080/api/v1/card/1/cards/" + cardId;
+
+            const options = {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+
+            fetch(url, options)
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Player deleted successfully!');
+                        location.reload();
+                    } else {
+                        console.error('Error deleting player:', response.statusText);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            location.reload();
+
+        }
+    </script>
+
+    <script>
+        // Variable to store the selected section
+        let selectedSection = 1; // Set the default selected section to 1
+
+        // Function to handle the click event on dropdown items and update the selected section
+        function handleDropdownItemClick(sectionValue) {
+            selectedSection = sectionValue;
+            document.getElementById("dropdownMenuButton").textContent = "Section " + selectedSection; // Update the button text to reflect the selected section
+        }
+
+        function createCard() {
+            let cardTitle = document.getElementById("enterTitleCard").value;
+            let cardDescription = document.getElementById("enterDescriptionCard").value;
+
+            // Validate cardTitle, cardDescription, and selectedSection here if needed
+
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            var raw = JSON.stringify({
+                "title": cardTitle,
+                "description": cardDescription,
+                "section": selectedSection
+            });
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+
+            fetch("http://localhost:8080/api/v1/card/add/1/cards", requestOptions)
+                .then(response => response.json())
+                .then(result => {
+                    console.log(result);
+                })
+                .catch(error => console.log('error', error));
+            location.reload();
+        }
+
+        // Add event listeners to dropdown items and update selected section on click
+        document.getElementById("section1").addEventListener("click", () => handleDropdownItemClick(1));
+        document.getElementById("section2").addEventListener("click", () => handleDropdownItemClick(2));
+        document.getElementById("section3").addEventListener("click", () => handleDropdownItemClick(3));
+    </script>
+
+
+    <script>
+        // Function to fetch the titles from the API
+        function getTitlesFromAPI() {
+
+            var requestOptions = {
+                method: 'GET',
+                redirect: 'follow'
+            };
+
+            fetch("http://localhost:8080/api/v1/board/getAll", requestOptions)
+                .then((response) => { return response.json() })
+                .then(
+                    (parsedResponse) => {
+
+                        parsedResponse.forEach(element => {
+                            let titleDiv = document.getElementById("main-title");
+                            titleDiv.innerHTML = element.title;
+                        });
+                    }
+                )
+                .catch(error => console.log('error', error));
+        }
+
+        window.addEventListener("load", function () {
+            getTitlesFromAPI();
+        });
+
+        function upadteTitle() {
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            const titleValue = document.getElementById('input-title').value;
+
+            var raw = JSON.stringify({
+                "title": titleValue // Changed 'nameValue' to 'titleValue'
+            });
+
+            var requestOptions = {
+                method: 'PUT',
+                headers: myHeaders,
+                body: raw,
+            };
+
+            fetch("http://localhost:8080/api/v1/board/update/1", requestOptions)
+                .then(response => response.json())
+                .then(result => console.log(result))
+                .catch(error => console.log('error', error));
+        }
+
+        const inputTitle = document.getElementById("input-title");
+        const mainTitle = document.getElementById("main-title");
+        const setButton = document.getElementById("set-button");
+
+        // Event listener for the "SET" button click
+        setButton.addEventListener("click", function () {
+            upadteTitle();
+            // Get the value from the input text box
+            const newTitle = inputTitle.value.trim();
+
+            // Update the main title with the new value
+            if (newTitle !== "") {
+                mainTitle.textContent = newTitle;
+            }
+        });
+    </script>
+
+    <script src="./index.js"></script>
+
+</body>
+
+</html>
